@@ -1,0 +1,11 @@
+# Dependencies
+node_modules
+
+# cache
+.yarn/install-state.gz
+.yarn/cache
+yarn.lock
+
+.pnpm-debug.log
+
+cache
