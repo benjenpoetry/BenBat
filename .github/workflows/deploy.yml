@@ -5,17 +5,13 @@ on:
     branches: [main]
   workflow_dispatch:
 
-concurrency:
-  group: "pages-${{ github.ref }}"
-  cancel-in-progress: true
-
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,15 +27,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
-          name: vp-artifact-${{ github.run_id }}  # 唯一名称
-  
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+      
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-        id: deployment
