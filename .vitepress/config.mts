@@ -7,7 +7,7 @@ const structs = genStructs(dir);
 const nav = genNav(structs);
 const sidebar = genSidebarItems(structs);
 export default defineConfig({
-    base: process.env.NODE_ENV === 'production' ? '/BenBat' : '/',
+    base: process.env.NODE_ENV === 'production' ? '/BenBat/' : '/',
     title: 'BenBat',
     locales: {
         root: { label: '简体中文' },
